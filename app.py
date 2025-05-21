@@ -6,28 +6,35 @@ st.title("GC Verisi ile Solvent Formülasyon ve İyileştirme Aracı")
 
 st.markdown("Bu araç, GC analizi sonucu elde edilen bileşen oranlarına göre formül önerileri sunar.")
 
+st.subheader("GC Pik Görseli (Varsa)")
+uploaded_file = st.file_uploader("GC analiz görüntüsü yükle (isteğe bağlı)", type=["png", "jpg", "jpeg", "pdf"])
+if uploaded_file:
+    st.image(uploaded_file, caption="GC Analiz Görseli", use_column_width=True)
+
+# Kullanıcıdan solvent verileri
 gc_data = {}
 st.subheader("GC Analiz Verisi Girişi")
-for bilesen in ["Etanol", "IPA", "N-Propanol", "Etil Asetat", "PM"]:
-    oran = st.number_input(f"{bilesen} (%)", min_value=0.0, max_value=100.0, step=0.1)
-    gc_data[bilesen] = oran
+solventler = [
+    "Etanol", "IPA", "N-Propanol", "Etil Asetat", "PM", "MEK", "Bütanol", "Toluen", "Ksilen",
+    "Aseton", "Metil Asetat", "Butil Asetat", "Etil Laktat", "DPM", "Texanol"
+]
 
+cols = st.columns(3)
+for i, bilesen in enumerate(solventler):
+    with cols[i % 3]:
+        oran = st.number_input(f"{bilesen} (%)", min_value=0.0, max_value=100.0, step=0.1, key=bilesen)
+        gc_data[bilesen] = oran
+
+# Hedef formülasyon (örnek selülozik tiner için)
 target_formulation = {
-    "Etanol": 5,
-    "IPA": 10,
-    "N-Propanol": 5,
-    "Etil Asetat": 15,
-    "MEK": 15,
-    "PM": 50
+    "Etanol": 5, "IPA": 10, "N-Propanol": 5, "Etil Asetat": 15, "MEK": 15, "PM": 30,
+    "Toluen": 5, "Ksilen": 5, "Aseton": 5, "Bütanol": 5
 }
 
 vp_values = {
-    "Etanol": 59,
-    "IPA": 33,
-    "N-Propanol": 21,
-    "Etil Asetat": 73,
-    "MEK": 70,
-    "PM": 5
+    "Etanol": 59, "IPA": 33, "N-Propanol": 21, "Etil Asetat": 73, "MEK": 70,
+    "PM": 5, "Toluen": 22, "Ksilen": 10, "Aseton": 180, "Bütanol": 4,
+    "Metil Asetat": 88, "Butil Asetat": 13, "DPM": 1.5, "Texanol": 0.8
 }
 
 formul_farki = {key: target_formulation.get(key, 0) - gc_data.get(key, 0) for key in target_formulation}
