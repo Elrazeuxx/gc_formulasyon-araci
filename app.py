@@ -2,8 +2,6 @@ import streamlit as st import pandas as pd from datetime import datetime from io
 
 st.set_page_config(page_title="SolventLab | Proses Asistanı", layout="wide")
 
-Özel başlık ve tema
-
 st.markdown(""" <div style='background-color:#2C3E50;padding:10px;border-radius:8px'> <h1 style='color:white;text-align:center;margin-bottom:0;'>SolventLab</h1> <h4 style='color:#ECF0F1;text-align:center;margin-top:0;'>Proses Asistanı</h4> </div> <br> """, unsafe_allow_html=True)
 
 st.markdown("Bu araç, GC analizine dayalı solvent formülasyonu, proses hazırlığı, maliyet hesabı, AI yorumları ve reçete kayıt sistemini bir araya getirir.")
