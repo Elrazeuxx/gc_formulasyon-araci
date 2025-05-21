@@ -1,9 +1,4 @@
-import streamlit as st
-import pandas as pd
-from datetime import datetime
-from io import BytesIO
-from fpdf import FPDF
-import json
+import streamlit as stimport pandas as pdfrom datetime import datetimefrom io import BytesIOfrom fpdf import FPDF import json
 
 st.set_page_config(page_title="SolventLab | Proses Asistanı", layout="wide")
 
