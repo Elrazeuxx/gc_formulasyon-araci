@@ -11,7 +11,7 @@ st.markdown(""" <div style='background-color:#2C3E50;padding:10px;border-radius:
 
 st.markdown("Bu araç, GC analizine dayalı solvent formülasyonu, proses hazırlığı, maliyet hesabı, AI yorumları ve reçete kayıt sistemini bir araya getirir.")
 
-Reçete kayıt sistemi
+#Reçete kayıt sistemi
 
 data_store = {} load_data = st.selectbox("Kayıtlı Reçete Yükle (Tarayıcı içi)", options=["---"] + list(st.session_state.get("saved_recipes", {}).keys())) if load_data != "---": veri = st.session_state["saved_recipes"][load_data] firma = veri["firma"] tiner_turu = veri["tiner_turu"] gc_data = veri["gc_data"] fiyatlar = veri["fiyatlar"] litre_secimi = veri["litre"] koku_durumu = veri["koku"] else: firma = st.text_input("Firma adı (isteğe bağlı)") tiner_turu = st.selectbox("Tiner Türü", ["Selülozik", "Poliüretan", "Temizlik"]) gc_data, fiyatlar = {}, {} litre_secimi = st.selectbox("Solvent Miktarı (L)", [9000, 19000]) koku_durumu = st.selectbox("Koku Seviyesi", ["Hafif", "Orta", "Şiddetli"])
 
