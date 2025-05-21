@@ -1,3 +1,4 @@
+from fpdf import FPDF
 import streamlit as st
 from datetime import datetime
 from io import BytesIO
