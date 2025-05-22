@@ -92,3 +92,21 @@ if st.button("PDF Oluştur"):
     pdf.output(buffer)
     buffer.seek(0)
     st.download_button("PDF İndir", data=buffer, file_name="rapor.pdf", mime="application/pdf")
+    from fpdf import FPDF
+import base64
+
+if st.button("PDF Oluştur"):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.add_font('DejaVu', '', 'DejaVuSans.ttf', uni=True)
+    pdf.set_font('DejaVu', '', 12)
+    pdf.cell(200, 10, txt="Formülasyon başarıyla oluşturuldu. İçeriğinde çözücü oranları ve tahmini yorumlar mevcuttur.", ln=True, align='L')
+
+    pdf.output("formulasyon.pdf")
+
+    # PDF'i indirilebilir hale getir
+    with open("formulasyon.pdf", "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        href = f'<a href="data:application/pdf;base64,{base64_pdf}" download="formulasyon.pdf">PDF dosyasını indir</a>'
+        st.markdown(href, unsafe_allow_html=True)
+
