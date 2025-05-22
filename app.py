@@ -2,7 +2,7 @@ import streamlit as st
 from fpdf import FPDF
 from io import BytesIO
 import base64
-
+import os
 
 # Sayfa başlığı
 st.set_page_config(page_title="SolventLab | Proses Asistanı", layout="wide")
@@ -25,42 +25,46 @@ class PDF(FPDF):
         for line in data_lines:
             self.multi_cell(0, 10, line, align="L")
 
-# Örnek veri
-satirlar = [
-    "Firma: Bilinmiyor",
-    "Tahmini Maliyet: 27 TL",
-    "Solvent Oranları:",
-    "- Etanol: 10%",
-    "- IPA: 25%",
-    "- Toluen: 15%",
-    "Yorumlar: Oranlar iyi, kuruma hızlı olabilir."
-]
-
-# PDF butonu
-if st.button("📄 PDF Oluştur"):
-    # Veriler örnek olarak, dinamik hale getirebilirsin
+# Font dosyasının mevcut olup olmadığını kontrol edin
+FONT_PATH = "DejaVuSans.ttf"
+if not os.path.isfile(FONT_PATH):
+    st.error(f"{FONT_PATH} dosyası bulunamadı. Lütfen bu font dosyasını uygulama dizinine ekleyin.")
+else:
+    # Örnek veri
     satirlar = [
         "Firma: Bilinmiyor",
         "Tahmini Maliyet: 27 TL",
         "Solvent Oranları:",
-        "Etanol: 10%",
-        "IPA: 25%",
-        "Toluene: 15%",
-        "AI Yorum: Etil Asetat düşük, kuruma yavaş olabilir."
+        "- Etanol: 10%",
+        "- IPA: 25%",
+        "- Toluen: 15%",
+        "Yorumlar: Oranlar iyi, kuruma hızlı olabilir."
     ]
 
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.add_font("DejaVu", "", "DejaVuSans.ttf", uni=True)
-    pdf.set_font("DejaVu", "", 12)
+    # PDF butonu
+    if st.button("📄 PDF Oluştur"):
+        satirlar = [
+            "Firma: Bilinmiyor",
+            "Tahmini Maliyet: 27 TL",
+            "Solvent Oranları:",
+            "- Etanol: 10%",
+            "- IPA: 25%",
+            "- Toluen: 15%",
+            "AI Yorum: Etil Asetat düşük, kuruma yavaş olabilir."
+        ]
 
-    for line in satirlar:
-        pdf.multi_cell(0, 10, line)
+        pdf = PDF()
+        pdf.add_font("DejaVu", "", FONT_PATH, uni=True)
+        pdf.add_page()
+        pdf.set_font("DejaVu", "", 12)
 
-    buffer = BytesIO()
-    pdf.output(buffer)
-    buffer.seek(0)
+        for line in satirlar:
+            pdf.multi_cell(0, 10, line)
 
-    b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
-    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">📥 PDF dosyasını indir</a>'
-    st.markdown(href, unsafe_allow_html=True)
+        buffer = BytesIO()
+        pdf.output(buffer, 'F')
+        buffer.seek(0)
+
+        b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
+        href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">📥 PDF dosyasını indir</a>'
+        st.markdown(href, unsafe_allow_html=True)
