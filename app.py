@@ -3,6 +3,7 @@ from fpdf import FPDF
 from io import BytesIO
 import base64
 
+
 # Sayfa başlığı
 st.set_page_config(page_title="SolventLab | Proses Asistanı", layout="wide")
 
@@ -36,17 +37,30 @@ satirlar = [
 ]
 
 # PDF butonu
-if st.button("PDF Oluştur"):
-    pdf = PDF()
+if st.button("📄 PDF Oluştur"):
+    # Veriler örnek olarak, dinamik hale getirebilirsin
+    satirlar = [
+        "Firma: Bilinmiyor",
+        "Tahmini Maliyet: 27 TL",
+        "Solvent Oranları:",
+        "Etanol: 10%",
+        "IPA: 25%",
+        "Toluene: 15%",
+        "AI Yorum: Etil Asetat düşük, kuruma yavaş olabilir."
+    ]
+
+    pdf = FPDF()
     pdf.add_page()
     pdf.add_font("DejaVu", "", "DejaVuSans.ttf", uni=True)
     pdf.set_font("DejaVu", "", 12)
-    pdf.add_content(satirlar)
+
+    for line in satirlar:
+        pdf.multi_cell(0, 10, line)
 
     buffer = BytesIO()
     pdf.output(buffer)
     buffer.seek(0)
 
     b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
-    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">PDF dosyasını indir</a>'
+    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">📥 PDF dosyasını indir</a>'
     st.markdown(href, unsafe_allow_html=True)
