@@ -1,3 +1,5 @@
+import streamlit as st
+
 from fpdf import FPDF
 pdf = FPDF()
 pdf.add_page()
