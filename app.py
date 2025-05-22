@@ -1,8 +1,11 @@
 from fpdf import FPDF
-import streamlit as st
-from datetime import datetime
-from io import BytesIO
-from fpdf import FPDF
+pdf = FPDF()
+pdf.add_page()
+pdf.add_font('DejaVu', '', 'DejaVuSans.ttf', uni=True)
+pdf.set_font('DejaVu', '', 12)
+pdf.cell(200, 10, txt="Formülasyon başarıyla oluşturuldu. İçeriğinde çözücü oranları ve tahmini yorumlar mevcuttur.", ln=True, align='L')
+pdf.output("formulasyon.pdf")
+
 
 st.set_page_config(page_title="SolventLab | Proses Asistanı", layout="wide")
 
