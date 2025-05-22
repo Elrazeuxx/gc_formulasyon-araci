@@ -72,41 +72,44 @@ soda = round(250 * (litre_secimi / 9000))
 amonyak = round(50 * (litre_secimi / 9000))
 st.info(f"Sodyum Karbonat (Na2CO3): {soda} kg, Amonyak (%25): {amonyak} L")
 
-# PDF çıktısı
+from fpdf import FPDF
+import base64
+from io import BytesIO
+
 class PDF(FPDF):
     def header(self):
-        self.set_font("Arial", 'B', 12)
-        self.cell(0, 10, "SolventLab | Proses Asistanı Raporu", ln=True, align='C')
+        self.set_font("DejaVu", '', 14)
+        self.cell(0, 10, "SolventLab | Proses Asistanı Raporu", ln=True, align="C")
+
+    def add_content(self, data_lines):
+        self.set_font("DejaVu", '', 12)
+        for line in data_lines:
+            self.multi_cell(0, 10, line)
 
 if st.button("PDF Oluştur"):
     pdf = PDF()
     pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    pdf.multi_cell(
-        0, 10,
-        f"Firma: Bilinmiyor\n\nSolvent Oranları:\n" +
-        ", ".join([f"{k}: {v}%" for k, v in veriler.items()]) +
-        f"\n\nTahmini Maliyet: {maliyet:.2f} TL\n\nYorumlar: {'; '.join(yorumlar)}"
-    )
+    pdf.add_font("DejaVu", "", "DejaVuSans.ttf", uni=True)
+
+    # İçerik örneği — burayı kendi verilerinle dinamik hale getireceğiz
+    satirlar = [
+        "Firma: Bilinmiyor",
+        "Tahmini Maliyet: 27 TL",
+        "Solvent Oranları:",
+        "- Etanol: 10%",
+        "- IPA: 25%",
+        "- Toluen: 15%",
+        "Yorumlar: Oranlar iyi, kuruma hızlı olabilir.",
+    ]
+
+    pdf.add_content(satirlar)
+
     buffer = BytesIO()
     pdf.output(buffer)
     buffer.seek(0)
-    st.download_button("PDF İndir", data=buffer, file_name="rapor.pdf", mime="application/pdf")
-    from fpdf import FPDF
-import base64
 
-if st.button("PDF Oluştur"):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.add_font('DejaVu', '', 'DejaVuSans.ttf', uni=True)
-    pdf.set_font('DejaVu', '', 12)
-    pdf.cell(200, 10, txt="Formülasyon başarıyla oluşturuldu. İçeriğinde çözücü oranları ve tahmini yorumlar mevcuttur.", ln=True, align='L')
+    b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
+    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">PDF dosyasını indir</a>'
+    st.markdown(href, unsafe_allow_html=True)
 
-    pdf.output("formulasyon.pdf")
-
-    # PDF'i indirilebilir hale getir
-    with open("formulasyon.pdf", "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-        href = f'<a href="data:application/pdf;base64,{base64_pdf}" download="formulasyon.pdf">PDF dosyasını indir</a>'
-        st.markdown(href, unsafe_allow_html=True)
 
