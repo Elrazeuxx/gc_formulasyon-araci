@@ -61,10 +61,22 @@ if st.button("PDF Oluştur"):
             pdf.multi_cell(0, 10, f"- {y}", align="L")
 
     # PDF'i belleğe al
-   buffer = BytesIO()
-pdf.output(buffer)
-buffer.seek(0)
+   if st.button("PDF Oluştur"):
+    pdf = PDF()
+    pdf.add_page()
+    pdf.add_font("DejaVu", "", "DejaVuSans.ttf", uni=True)
+    pdf.set_font("DejaVu", "", 12)
+    
+    # Satırları ekle
+    for line in satirlar:
+        pdf.multi_cell(0, 10, line, align="L")
 
-b64 = base64.b64encode(buffer.read()).decode("utf-8")
-href = f'<a href="data:application/octet-stream;base64,{b64}" download="formulasyon_raporu.pdf">PDF dosyasını indir</a>'
-st.markdown(href, unsafe_allow_html=True)
+    # PDF'i belleğe al
+    buffer = BytesIO()
+    pdf.output(buffer)
+    buffer.seek(0)
+
+    b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
+    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">PDF dosyasını indir</a>'
+    st.markdown(href, unsafe_allow_html=True)
+
