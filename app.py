@@ -61,9 +61,10 @@ if st.button("PDF Oluştur"):
             pdf.multi_cell(0, 10, f"- {y}", align="L")
 
     # PDF'i belleğe al
-    buffer = BytesIO()
-    pdf.output(buffer)
-    buffer.seek(0)
-    b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
-    href = f'<a href="data:application/pdf;base64,{b64_pdf}" download="formulasyon_raporu.pdf">📄 PDF dosyasını indir</a>'
-    st.markdown(href, unsafe_allow_html=True)
+   buffer = BytesIO()
+pdf.output(buffer)
+buffer.seek(0)
+
+b64 = base64.b64encode(buffer.read()).decode("utf-8")
+href = f'<a href="data:application/octet-stream;base64,{b64}" download="formulasyon_raporu.pdf">PDF dosyasını indir</a>'
+st.markdown(href, unsafe_allow_html=True)
