@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Dietil Eter,C4H10O,0.713,,34.6,6.9,,"Alkol, Kloroform","Anestezik, çözücü","Çok yanıcı, patlayıcı buhar"
+Dimetil Eter,C2H6O,0.668,,-24.9,3.4,,"Propan, Bütan","Aerosol itici, yakıt","Yanıcı gaz, solunursa zararlı"
+Tetrahidrofuran (THF),C4H8O,0.889,7.0,66.0,100.0,Sınırsız,"Su, Aseton","Polimer çözücü, ilaç sentezi","Yanıcı, peroksit oluşturabilir"
+Metil Tert-Bütil Eter (MTBE),C5H12O,0.74,,55.2,4.8,,Benzin,Yakıt katkısı,"Çevreye zararlı, kanser şüpheli"
+Dietilen Glikol Dietil Eter (DEGDEE),C8H18O3,0.942,,202.0,100.0,Sınırsız,"Su, Etanol","Kaplama, baskı mürekkebi","Düşük toksik, hafif irritan"
+Etilen Glikol Dietil Eter (EGDEE),C6H14O3,0.923,,180.0,100.0,Sınırsız,"Su, Aseton","Solvent, temizlik",Üreme sistemine toksik
+Dibütil Eter,C8H18O,0.765,,141.6,0.04,,"Toluen, IPA","Solvent, özel kaplamalar","Düşük toksik, yanıcı"
