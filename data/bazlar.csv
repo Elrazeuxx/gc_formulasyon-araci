@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Sodyum Hidroksit,NaOH,2.13,13.0,1390.0,100.0,Sınırsız,Su,"pH dengeleme, temizlik kimyasalları","Aşındırıcı, ciddi cilt yanığı"
+Potasyum Hidroksit,KOH,2.12,14.0,1320.0,100.0,Sınırsız,"Su, Alkol","Sabun üretimi, pH ayarlayıcı","Aşındırıcı, göz ve cilt tahrişi"
+Amonyak (sulu),NH3,0.88,11.6,-33.3,100.0,Sınırsız,"Su, Etanol","Temizlik ürünleri, azot kaynağı","Tahriş edici, yanıcı buhar"
+Sodyum Karbonat,Na2CO3,2.54,11.5,851.0,29.7,,Su,"Cam, deterjan, su arıtma","Tahriş edici, toz solunmamalı"
+Kalsiyum Hidroksit,Ca(OH)2,2.21,12.4,580.0,1.7,,Su,"Harç, pH düzenleme","Cilt tahrişi, göz için tehlikeli"
+Trietanolamin,C6H15NO3,1.124,10.5,335.0,100.0,Sınırsız,"Su, Glikoller","Kozmetik, emülsiyonlaştırıcı","Düşük toksik, hafif tahriş edici"
+Monoetanolamin,C2H7NO,1.017,11.5,170.0,100.0,Sınırsız,"Su, Etanol","Gaz arıtımı, kozmetik","Aşındırıcı, tahriş edici"
