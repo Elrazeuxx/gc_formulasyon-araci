@@ -15,6 +15,8 @@ KATEGORILER = {
     "Bazlar": "data/bazlar.csv",
     "Aldehitler": "data/aldehitler.csv",
     "Aromatikler": "data/aromatikler.csv"
+    "Glikoller": "veri/glikoller.csv"
+
 }
 # --- Kategori Seçimi ---
 kategori = st.sidebar.selectbox("Solvent/Sınıf Grubu Seçin", list(KATEGORILER.keys()))
