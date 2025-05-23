@@ -1,0 +1,7 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Etil Asetat,C4H8O2,0.902,7.0,77.1,8.7,,"Aseton, Etanol, IPA","Boya çözücü, tırnak cilası, mürekkep","Yanıcı, hafif tahriş edici"
+Bütil Asetat,C6H12O2,0.882,6.5,126.1,0.2,,"Aseton, Toluen","Tiner, boya çözücü, vernik","Tahriş edici, yanıcı"
+İzobütil Asetat,C6H12O2,0.87,,118.4,0.7,,"Toluen, IPA","Lak çözücüsü, endüstriyel temizlik","Tahriş edici, buhar zararlı"
+Metil Asetat,C3H6O2,0.93,,56.9,24.0,,"Aseton, Etanol","Boya, mürekkep, kaplama","Yanıcı, göz ve burun tahrişi"
+İzopropil Asetat,C5H10O2,0.87,,89.5,3.7,,"IPA, Etil Asetat","Çözücü, vernik katkısı","Tahriş edici, uçucu"
+Amil Asetat,C7H14O2,0.876,,148.5,0.3,,"IPA, Etanol","Meyvemsi koku verici, tiner","Düşük toksik, yanıcı"
