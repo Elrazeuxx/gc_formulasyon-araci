@@ -20,6 +20,8 @@ KATEGORILER = {
     "Esterler": "veri/esterler.csv",
     "Asitler": "veri/asitler.csv",
     "Bazlar": "veri/bazlar.csv",
+    "Eterler": "veri/eterler.csv",
+
 
 
 }
