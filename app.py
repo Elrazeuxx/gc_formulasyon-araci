@@ -21,7 +21,9 @@ KATEGORILER = {
     "Asitler": "veri/asitler.csv",
     "Bazlar": "veri/bazlar.csv",
     "Eterler": "veri/eterler.csv",
-    "Klorlu Solventler": "veri/klorlu_solventler.csv"
+    "Klorlu Solventler": "veri/klorlu_solventler.csv",
+    "Hidrokarbonlar": "veri/hidrokarbonlar.csv",
+
 
 }
 # --- Kategori Seçimi ---
