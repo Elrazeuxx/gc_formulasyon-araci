@@ -16,14 +16,14 @@ KATEGORILER = {
     "Aldehitler": "data/aldehitler.csv",
     "Aromatikler": "data/aromatikler.csv",
     "Glikoller": "data/glikoller.csv",
-    "Aminler": "veri/aminler.csv",
-    "Esterler": "veri/esterler.csv",
-    "Asitler": "veri/asitler.csv",
-    "Bazlar": "veri/bazlar.csv",
-    "Eterler": "veri/eterler.csv",
-    "Klorlu Solventler": "veri/klorlu_solventler.csv",
-    "Hidrokarbonlar": "veri/hidrokarbonlar.csv",
-    "Polar Aprotik Solventler": "veri/polar_aprotik_solventler.csv",
+    "Aminler": "data/aminler.csv",
+    "Esterler": "data/esterler.csv",
+    "Asitler": "data/asitler.csv",
+    "Bazlar": "data/bazlar.csv",
+    "Eterler": "data/eterler.csv",
+    "Klorlu Solventler": "data/klorlu_solventler.csv",
+    "Hidrokarbonlar": "data/hidrokarbonlar.csv",
+    "Polar Aprotik Solventler": "data/polar_aprotik_solventler.csv",
 
 }
 # --- Kategori Seçimi ---
