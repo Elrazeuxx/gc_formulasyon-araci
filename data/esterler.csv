@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Metil Akrilat,C4H6O2,0.953,,80.0,5.0,,Akrilik polimer solventi,"Yapıştırıcı, boya, plastik","Yanıcı, göz ve cilt tahrişi"
+Etil Akrilat,C5H8O2,0.921,,99.4,1.5,,Akrilik reçineler,"Kaplama, plastik katkı","Alerjen, yanıcı"
+Bütil Akrilat,C7H12O2,0.897,,145.4,0.2,,"Toluen, Asetatlar","Lateks boya, plastik","Cilt tahrişi, yanıcı"
+Metil Propiyonat,C4H8O2,0.915,,80.6,4.8,,"Etanol, Aseton","Parfümeri, boya","Yanıcı, solunum tahrişi"
+Etil Propiyonat,C5H10O2,0.89,,99.1,1.7,,"IPA, Etanol","Koku verici, çözücü","Düşük toksik, yanıcı"
+Metil Laktat,C4H8O3,1.02,5.5,145.0,100.0,Sınırsız,"Su, Etanol","Gıda katkısı, kozmetik",Düşük toksisite
+Etil Laktat,C5H10O3,1.03,5.5,154.0,100.0,Sınırsız,"Etanol, Su","Gıda çözücüsü, biyobozunur solvent","Düşük toksik, çevre dostu"
