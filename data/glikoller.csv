@@ -1,0 +1,9 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Etilen Glikol,C2H6O2,1.113,8.5,197.3,100.0,Sınırsız,"Su, PG","Antifriz, ısı transfer sıvısı","Toksik, yutulursa tehlikeli"
+Propilen Glikol,C3H8O2,1.036,7.0,188.2,100.0,Sınırsız,"Su, Etanol","Gıda, kozmetik, farmasötik","Düşük toksisite, güvenli"
+Dietilen Glikol,C4H10O3,1.118,8.0,244.0,100.0,Sınırsız,"Su, Gliserol","Plastik, boya, nemlendirici","Toksik, karaciğer hasarı"
+Trietilen Glikol,C6H14O4,1.125,,285.0,100.0,Sınırsız,"Su, Etanol","Dezenfektan, nem bağlayıcı","Düşük toksik, hafif irritan"
+Butilen Glikol,C4H10O2,1.004,6.0,230.0,100.0,Sınırsız,"Su, PG","Kozmetik, boya",Düşük toksik
+Propilen Glikol Monometil Eter (PM),C4H10O2,0.92,7.0,120.0,100.0,Sınırsız,"Su, Aseton","Boya, temizlik, mürekkep","Tahriş edici, buhar etkili"
+Propilen Glikol Monobütil Eter (PB),C7H16O2,0.94,,171.0,5.0,,"Su, IPA","Kaplama, temizlik",Tahriş edici
+Etilen Glikol Monobütil Eter (BuGE),C6H14O2,0.9,,171.0,8.3,,"Su, IPA","Solvent, deterjan","Zararlı, göz ve cilt tahrişine neden olabilir"
