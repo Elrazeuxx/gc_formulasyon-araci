@@ -26,6 +26,8 @@ KATEGORILER = {
     "Polar Aprotik Solventler": "data/polar_aprotik_solventler.csv",
     "Biyolojik Solventler": "data/biyolojik_solventler.csv",
     "Yüksek Kaynama Noktalı Solventler": "data/yuksek_kaynama_solventler.csv",
+    "Metal Temizleme Solventleri": "data/metal_temizleme_solventleri.csv",
+
 
 
 
