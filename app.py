@@ -24,6 +24,8 @@ KATEGORILER = {
     "Klorlu Solventler": "data/klorlu_solventler.csv",
     "Hidrokarbonlar": "data/hidrokarbonlar.csv",
     "Polar Aprotik Solventler": "data/polar_aprotik_solventler.csv",
+    "Biyolojik Solventler": "data/biyolojik_solventler.csv",
+
 
 }
 # --- Kategori Seçimi ---
