@@ -19,6 +19,8 @@ KATEGORILER = {
     "Aminler": "veri/aminler.csv",
     "Esterler": "veri/esterler.csv",
     "Asitler": "veri/asitler.csv",
+    "Bazlar": "veri/bazlar.csv",
+
 
 }
 # --- Kategori Seçimi ---
