@@ -23,7 +23,7 @@ KATEGORILER = {
     "Eterler": "veri/eterler.csv",
     "Klorlu Solventler": "veri/klorlu_solventler.csv",
     "Hidrokarbonlar": "veri/hidrokarbonlar.csv",
-    "Polar Aprotik Solventler": "veri/polar_aprotik_solventler.csv"
+    "Polar Aprotik Solventler": "veri/polar_aprotik_solventler.csv",
 
 
 
