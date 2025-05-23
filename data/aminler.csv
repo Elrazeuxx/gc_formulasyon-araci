@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Metilamin,CH5N,0.699,11.0,-6.3,100,Sınırsız,"Su, Etanol","İlaç, tarım kimyasalları","Aşındırıcı, toksik"
+Dimetilamin,C2H7N,0.674,11.2,7.0,100,Sınırsız,"Su, Metanol","Reçine üretimi, katalizör","Toksik, yanıcı buhar"
+Trimetilamin,C3H9N,0.641,10.6,2.9,100,Sınırsız,"Su, Etanol","Boyar madde, ilaç","Keskin koku, solunum tahrişi"
+Etilamin,C2H7N,0.693,11.6,16.6,100,Sınırsız,"Su, Aseton","İlaç, pestisit","Aşındırıcı, tahriş edici"
+Dietilamin,C4H11N,0.707,11.1,55.5,100,Sınırsız,"Su, Etanol","Lastik katkısı, boya","Zararlı, yanıcı"
+Trimetilenamin,C3H9N,0.708,10.5,65.0,100,,"Su, IPA",Kimyasal ara ürün,"Tahriş edici, uçucu"
+Monoetanolamin (MEA),C2H7NO,1.017,10.5,170.0,100,Sınırsız,"Su, Glikol","Yüzey aktif madde, gaz arıtma","Aşındırıcı, çevreye zararlı"
