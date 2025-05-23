@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Etil Laktat,C5H10O3,1.03,5.5,154,100.0,Sınırsız,"Su, Etanol","Gıda çözücüsü, biyobozunur solvent","Düşük toksik, çevre dostu"
+Metil Soyat,C19H36O3,0.88,,214,0.05,,"Nafta, Gliserin","Biyolojik çözücü, endüstriyel temizlik","Düşük toksik, çevre dostu"
+Limonen (d-Limonene),C10H16,0.841,,176,0.007,,White Spirit,"Doğal çözücü, narenciye bazlı temizlik","Doğal, ancak cilt hassasiyetine neden olabilir"
+Gliserol (Gliserin),C3H8O3,1.26,7.0,290,100.0,Sınırsız,"Su, Etanol","Nemlendirici, biyolojik katkı","Çevre dostu, toksik değil"
+Propilen Karbonat,C4H6O3,1.2,6.8,242,100.0,Sınırsız,"DMSO, Etanol","Biyolojik çözücü, lityum pil elektroliti","Düşük toksik, stabil"
+Polilaktik Asit (PLA çözeltisi),Karışım,1.25,,150-180,100.0,Sınırsız,Etil laktat,Biyoplastik çözücü,"Biyobozunur, güvenli"
+Etanol (biyokökenli),C2H5OH,0.789,7.0,78.4,100.0,Sınırsız,"Su, IPA","Yeşil çözücü, gıda ve kozmetik","Düşük toksisite, doğal kaynak"
