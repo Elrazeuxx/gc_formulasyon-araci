@@ -16,7 +16,9 @@ KATEGORILER = {
     "Aldehitler": "data/aldehitler.csv",
     "Aromatikler": "data/aromatikler.csv",
     "Glikoller": "data/glikoller.csv",
-    "Aminler": "veri/aminler.csv"
+    "Aminler": "veri/aminler.csv",
+    "Esterler": "veri/esterler.csv"
+
 
 }
 # --- Kategori Seçimi ---
