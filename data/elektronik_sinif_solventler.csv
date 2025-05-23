@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Ultra Saf IPA (USP Grade),C3H8O,0.785,7.0,82.5,100.0,Sınırsız,"Su, Etanol",Yarı iletken yüzey temizliği,"Düşük toksik, çok saflıkta (>99.9%)"
+Ultra Saf Aseton,C3H6O,0.791,7.0,56.2,100.0,Sınırsız,"IPA, Etanol",Mikroçip yüzey hazırlığı,"Yanıcı, hızlı buharlaşır"
+NMP (Elektronik Sınıf),C5H9NO,1.03,7.5,202.0,100.0,Sınırsız,"Su, Etanol",Lityum pil elektrot işleme,"Üreme toksini, dikkatli kullanılmalı"
+HFE-7100 (Fluorinated Solvent),C4F9OCH3,1.52,,61.0,0.004,,Fluorlu çözücüler,"PCB, optik temizliği","Düşük toksik, pahalı"
+Vertrel XF,Karışım,1.35,,55.0,0.01,,HFE-7100,"Elektronik temizlik, yalıtkan solvent","Yüksek saflık, hızlı kuruma"
+Anhidröz Etanol,C2H5OH,0.789,7.0,78.4,100.0,Sınırsız,"Su, IPA","Elektronik temizliği, reçine çözme","Düşük toksik, saf alkol"
+"1-Metil-2-pirolidon (NMP, Ultra Saf)",C5H9NO,1.03,7.5,202.0,100.0,Sınırsız,"Su, Etanol",TFT-LCD üretimi,Üreme sistemine zararlı
