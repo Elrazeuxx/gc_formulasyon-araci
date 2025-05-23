@@ -1,0 +1,14 @@
+Aldehit Adı,Kapalı Formül,Açık Formül,Kaynama Noktası (°C),Erime Noktası (°C),Fiziksel Özellikler,Kimyasal Özellikler,Yoğunluk (g/cm³),Suda Çözünürlük (%),Polarite,Kullanım Alanları,Fiziksel Hali (25°C),Moleküler Ağırlık (g/mol),Parlama Noktası (°C),Toksisite / Güvenlik
+Formaldehit,CH2O,HCHO,-21,-92,"Renksiz gaz, keskin kokulu","Redükleyici, polimerleşebilir",0.815,100,Polar,"Dezenfektan, reçine üretimi",Gaz (sulu çözeltisi sıvıdır),30.03,-15,"Zararlı, tahriş edici"
+Asetaldehit,C2H4O,CH3CHO,20,-123,"Renksiz sıvı, meyvemsi koku","Kolay oksitlenir, asetal oluşturur",0.785,100,Polar,"Parfüm, boya, plastik",Sıvı,44.05,-38,"Çok tehlikeli, kanserojen şüpheli"
+Propanal,C3H6O,CH3CH2CHO,49,-81,Renksiz sıvı,Alkol ile reaksiyona girer,0.804,20,Polar,"Gıda aroması, farmasötik",Sıvı,58.08,-12,Tahriş edici
+Bütanal,C4H8O,CH3(CH2)2CHO,75,-99,Renksiz sıvı,Karbonil grubu elektrofiliktir,0.802,7,Polar,"Plastik, kauçuk katkısı",Sıvı,72.11,-18,Tahriş edici
+Pentanal,C5H10O,CH3(CH2)3CHO,103,-91,Yağlı sıvı,Yavaşça oksitlenebilir,0.809,2.5,Hafif polar,"Koku maddesi, boya katkısı",Sıvı,86.13,49,Tahriş edici
+Heksanal,C6H12O,CH3(CH2)4CHO,131,-57,Meyvemsi kokulu sıvı,Aldol kondenzasyonuna girer,0.815,0.6,Hafif polar,"Gıda aroması, deterjan",Sıvı,100.16,48,Düşük toksisite
+Heptanal,C7H14O,CH3(CH2)5CHO,155,-43,Sarımsı sıvı,Yükseltgenebilir,0.82,0.1,Hafif polar,"Parfümeri, kimyasal sentez",Sıvı,114.19,58,Düşük toksisite
+Oktanal,C8H16O,CH3(CH2)6CHO,171,-26,Tatlı kokulu sıvı,Oksidatif bozunmaya uğrar,0.827,<0.1,Polar olmayan,Parfüm ve aroma maddesi,Sıvı,128.21,68,Düşük toksisite
+Nonanal,C9H18O,CH3(CH2)7CHO,185,-21,Tatlı kokulu sıvı,Karbonil karbonuna nükleofilik saldırı olur,0.83,<0.1,Polar olmayan,"Aroma verici, tekstil kimyasalları",Sıvı,142.24,76,Düşük toksisite
+Dekanal,C10H20O,CH3(CH2)8CHO,207,-3,Yağlı sıvı,Yavaş reaksiyonlara girer,0.835,<0.1,Polar olmayan,Parfüm ve deterjan üretimi,Sıvı,156.26,85,Düşük toksisite
+Benzaldehit,C7H6O,C6H5CHO,179,-26,Badem kokulu sıvı,Benzoik aside oksitlenebilir,1.044,6,Polar,"Parfüm, boya, ilaç üretimi",Sıvı,106.12,64,"Zararlı, tahriş edici"
+Vanilin,C8H8O3,4-Hidroksi-3-metoksibenzaldehit,285,81,Beyaz kristal,Fenol grubu içerir,1.056,1.2,Polar,"Gıda aroması, kozmetik, ilaç",Katı,152.15,147,Düşük toksisite
+Furfural,C5H4O2,C4H3OCHO,162,-36,Badem kokulu sıvı,Reçineleşebilir,1.159,8.3,Polar,"Reçine, solvent, plastik üretimi",Sıvı,96.08,60,"Zararlı, cilt ve göz tahrişine neden olabilir"
