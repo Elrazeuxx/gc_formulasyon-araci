@@ -27,7 +27,9 @@ KATEGORILER = {
     "Biyolojik Solventler": "data/biyolojik_solventler.csv",
     "Yüksek Kaynama Noktalı Solventler": "data/yuksek_kaynama_solventler.csv",
     "Metal Temizleme Solventleri": "data/metal_temizleme_solventleri.csv",
-    "Reaktif Solventler": "veri/reaktif_solventler.csv",
+    "Reaktif Solventler": "data/reaktif_solventler.csv",
+   "Elektronik Sınıf Solventler": "data/elektronik_sinif_solventler.csv"
+ 
 
 }
 # --- Kategori Seçimi ---
