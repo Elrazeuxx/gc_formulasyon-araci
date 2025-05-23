@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Asetik Asit,C2H4O2,1.049,2.4,118.0,100.0,Sınırsız,"Su, Etanol","Sirke, solvent, polimer üretimi","Aşındırıcı, tahriş edici"
+Formik Asit,CH2O2,1.22,2.2,100.8,100.0,Sınırsız,"Su, Metanol","Dericilik, pestisit","Aşındırıcı, ciltte yanık yapabilir"
+Propiyonik Asit,C3H6O2,0.993,4.9,141.2,100.0,Sınırsız,"Su, Etanol","Koruyucu, boya katkı maddesi",Tahriş edici
+Bütirik Asit,C4H8O2,0.96,4.8,163.5,7.0,,"Su, Etanol","Yem katkısı, esans","Keskin kokulu, cilt tahrişi"
+Benzoik Asit,C7H6O2,1.32,2.9,249.2,0.29,,"Etanol, DMSO","Gıda koruyucu, antiseptik",Düşük toksisite
+Oleik Asit,C18H34O2,0.895,5.0,360.0,0.01,,"Etanol, kloroform","Sabun, kozmetik","Düşük toksik, çevre dostu"
+Laktik Asit,C3H6O3,1.209,2.4,122.0,100.0,Sınırsız,"Su, Etanol","Gıda katkısı, kozmetik","Düşük toksik, biyolojik olarak parçalanabilir"
