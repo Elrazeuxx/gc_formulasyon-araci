@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Metilen Klorür (Diklorometan),CH2Cl2,1.33,,39.8,1.3,,"Aseton, Kloroform","Boya sökücü, metal temizleme","Kanserojen şüpheli, toksik buhar"
+Kloroform (Triklorometan),CHCl3,1.49,,61.2,0.8,,"Metanol, DMSO","Anestezik, çözücü","Toksik, karaciğere zarar verir"
+Karbon Tetraklorür,CCl4,1.59,,76.7,0.08,,"Benzen, Kloroform","Yangın söndürücü, solvent","Karaciğer toksini, kanserojen"
+"1,1,1-Trikloroetan",C2H3Cl3,1.34,,74.1,0.1,,"Metanol, Toluen",Temizlik solventi,"Solunması tehlikeli, çevre zararı"
+Perkloroetilen (Tetrakloroetilen),C2Cl4,1.62,,121.0,0.015,,Kloroform,"Kuru temizleme, metal temizleme","Kanser şüpheli, uzun süre toksik"
+Trikloroetilen,C2HCl3,1.46,,87.2,0.1,,"Toluen, Metanol",Endüstriyel çözücü,"Nörotoksik, zararlı buhar"
+Kloretanol,C2H5ClO,1.18,,86.0,100.0,Sınırsız,"Su, Etanol","İlaç, lokal anestezik","Toksik, cilt tahrişine neden olabilir"
