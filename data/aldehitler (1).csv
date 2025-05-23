@@ -1,0 +1,14 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Formaldehit,CH2O,0.815,,-21,100.0,,,"Dezenfektan, reçine üretimi","Zararlı, tahriş edici"
+Asetaldehit,C2H4O,0.785,,20,100.0,,,"Parfüm, boya, plastik","Çok tehlikeli, kanserojen şüpheli"
+Propanal,C3H6O,0.804,,49,20.0,,,"Gıda aroması, farmasötik",Tahriş edici
+Bütanal,C4H8O,0.802,,75,7.0,,,"Plastik, kauçuk katkısı",Tahriş edici
+Pentanal,C5H10O,0.809,,103,2.5,,,"Koku maddesi, boya katkısı",Tahriş edici
+Heksanal,C6H12O,0.815,,131,0.6,,,"Gıda aroması, deterjan",Düşük toksisite
+Heptanal,C7H14O,0.82,,155,0.1,,,"Parfümeri, kimyasal sentez",Düşük toksisite
+Oktanal,C8H16O,0.827,,171,0.05,,,Parfüm ve aroma maddesi,Düşük toksisite
+Nonanal,C9H18O,0.83,,185,0.05,,,"Aroma verici, tekstil kimyasalları",Düşük toksisite
+Dekanal,C10H20O,0.835,,207,0.05,,,Parfüm ve deterjan üretimi,Düşük toksisite
+Benzaldehit,C7H6O,1.044,,179,6.0,,,"Parfüm, boya, ilaç üretimi","Zararlı, tahriş edici"
+Vanilin,C8H8O3,1.056,,285,1.2,,,"Gıda aroması, kozmetik, ilaç",Düşük toksisite
+Furfural,C5H4O2,1.159,,162,8.3,,,"Reçine, solvent, plastik üretimi","Zararlı, cilt ve göz tahrişine neden olabilir"
