@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+n-Heksan,C6H14,0.659,,68.7,0.014,,"Toluen, White Spirit","Temizlik solventi, ekstraksiyon","Nörotoksik, çok yanıcı"
+n-Heptan,C7H16,0.684,,98.4,0.006,,"Toluen, Alifatik solvent","Laboratuvar solventi, yağ çözücü","Yanıcı, baş dönmesi yapabilir"
+n-Nonan,C9H20,0.718,,150.8,0.005,,"Heptan, Dökme solvent","Yakıt katkısı, analiz standardı","Düşük toksik, yanıcı"
+n-Pentan,C5H12,0.626,,36.1,0.04,,Heptan,"Aerosol, köpük üretimi","Çok uçucu, patlayıcı buhar"
+Sikloheksan,C6H12,0.779,,80.7,0.005,,"Toluen, Benzen","Kaplama solventi, naylon üretimi","Tahriş edici, yanıcı"
+Beyaz İspirto (White Spirit),Bilinmiyor,0.78,,150.0,0.01,,"Toluen, Heptan","Boyacılık, tiner","Solunum tahrişi, hafif toksik"
+Nafta (alifatik),Bilinmiyor,0.71,,140.0,0.01,,"Heptan, Dökme solvent","Yakıt, solvent bazlı temizlik","Uçucu, baş dönmesi yapabilir"
