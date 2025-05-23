@@ -25,8 +25,6 @@ KATEGORILER = {
     "Hidrokarbonlar": "veri/hidrokarbonlar.csv",
     "Polar Aprotik Solventler": "veri/polar_aprotik_solventler.csv",
 
-
-
 }
 # --- Kategori Seçimi ---
 kategori = st.sidebar.selectbox("Solvent/Sınıf Grubu Seçin", list(KATEGORILER.keys()))
