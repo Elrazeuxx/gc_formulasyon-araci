@@ -17,8 +17,8 @@ KATEGORILER = {
     "Aromatikler": "data/aromatikler.csv",
     "Glikoller": "data/glikoller.csv",
     "Aminler": "veri/aminler.csv",
-    "Esterler": "veri/esterler.csv"
-
+    "Esterler": "veri/esterler.csv",
+    "Asitler": "veri/asitler.csv",
 
 }
 # --- Kategori Seçimi ---
