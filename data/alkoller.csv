@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Metanol,CH3OH,0.791,6.0,64.7,100.0,Sınırsız,"Su, Etanol, Aseton","Çözücü, antifriz, yakıt","Zehirli, körlüğe neden olabilir"
+Etanol,C2H5OH,0.789,7.0,78.4,100.0,Sınırsız,"Su, Metanol, IPA","Temizlik, dezenfektan, gıda katkısı","Düşük toksisite, yanıcı"
+İzopropanol (IPA),C3H8O,0.785,7.0,82.5,100.0,Sınırsız,"Su, Etanol, Aseton","Temizlik, dezenfektan, laboratuvar",Düşük toksisite
+Bütanol,C4H9OH,0.81,7.3,117.7,7.7,10,"Su, Etanol","Boyalar, kaplamalar, plastik katkı","Tahriş edici, orta toksik"
+Sek-Bütanol,C4H10O,0.81,,99.5,12.5,,"IPA, Aseton","Solvent, boya katkısı","Zararlı, göz ve cilt tahrişi"
+Ters-Bütanol,C4H10O,0.78,,82.2,29.0,,"Aseton, Metanol",Endüstriyel çözücü,"Zararlı, yanıcı"
+Pentanol (Amil alkol),C5H12O,0.81,,137.0,2.7,,"IPA, Bütanol","Parfüm, boya, reçine çözücü","Tahriş edici, yanıcı"
