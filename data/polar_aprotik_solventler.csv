@@ -1,0 +1,8 @@
+İsim,Kapalı Formül,Yoğunluk (g/cm³),pH,Kaynama Noktası (°C),Suda Çözünürlük (%),Max Su Oranı (%),Uyumlu Solventler,Kullanım Alanları,Toksisite / Güvenlik
+Dimetil Sülfoksit (DMSO),C2H6OS,1.1,7.0,189.0,100,Sınırsız,"Su, Etanol","İlaç taşıyıcı, biyolojik çözücü","Deriyle emilir, orta toksik"
+Dimetilformamid (DMF),C3H7NO,0.944,7.0,153.0,100,Sınırsız,"Su, Aseton","Polimer çözücü, ilaç üretimi","Üreme toksini, zararlı buhar"
+Dimetilasetamid (DMAc),C4H9NO,0.936,,165.0,100,Sınırsız,"Su, DMSO",Yüksek polimer çözme kapasitesi,"Cilt tahrişi, toksik buhar"
+N-Metil-2-pirolidon (NMP),C5H9NO,1.03,7.5,202.0,100,Sınırsız,"Su, DMF",Elektronik ve farmasötik çözücü,Üreme sağlığına zararlı
+Asetonitril,C2H3N,0.786,,81.6,100,Sınırsız,"Su, Etanol","GC-MS çözücü, ilaç sentezi","Toksik, yanıcı"
+Tetrahydrofuran (THF),C4H8O,0.889,7.0,66.0,100,Sınırsız,"Aseton, Etanol",Polimer ve organik sentez çözücüsü,"Peroksit oluşturur, yanıcı"
+Sülfolan,C4H8O2S,1.26,,285.0,100,Sınırsız,"DMSO, Su","Ekstraksiyon, yüksek polar çözücü","Düşük uçuculuk, hafif toksik"
