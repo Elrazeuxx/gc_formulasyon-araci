@@ -47,23 +47,19 @@ with st.sidebar.expander(_("⚙️ Ayarlar ve Geri Bildirim", "⚙️ Settings &
             st.error(_("Bir hata oluştu.", "An error occurred."))
             logging.error(f"Geri bildirim hatası: {e}")
 
-# --- Kullanım İstatistikleri ---
-st.sidebar.markdown("---")
-with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statistics")):
-    conn = sqlite3.connect("kullanici_geri_bildirim.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM feedback")
-    toplam_geri_bildirim = cursor.fetchone()[0]
-    st.metric(_("Gelen Geri Bildirim Sayısı", "Total Feedbacks"), toplam_geri_bildirim)
-    cursor.execute("SELECT tarih FROM feedback ORDER BY id DESC LIMIT 1")
-    son = cursor.fetchone()
-    st.metric(_("Son Bildirim Tarihi", "Last Feedback"), son[0] if son else "-")
-    if st.button(_("📥 Veritabanını CSV Olarak İndir", "📥 Download Feedback DB as CSV")):
-        df_feedback = pd.read_sql_query("SELECT * FROM feedback", conn)
-        csv_yolu = "feedback_" + datetime.now().strftime("%Y%m%d_%H%M") + ".csv"
-        df_feedback.to_csv(csv_yolu, index=False)
-        st.success(_("CSV dosyası oluşturuldu: ", "CSV file created: ") + csv_yolu)
-    conn.close()
+ with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statistics")):
+     conn = sqlite3.connect("kullanici_geri_bildirim.db")
+     cursor = conn.cursor()
+     cursor.execute("""
+         CREATE TABLE IF NOT EXISTS feedback (
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
+             tarih TEXT,
+             icerik TEXT
+         )
+     """)
+     cursor.execute("SELECT COUNT(*) FROM feedback")
+     toplam_geri_bildirim = cursor.fetchone()[0]
+
 
 # --- Versiyon Bilgisi ---
 st.sidebar.markdown("---")
