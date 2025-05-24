@@ -48,17 +48,18 @@ with st.sidebar.expander(_("⚙️ Ayarlar ve Geri Bildirim", "⚙️ Settings &
             logging.error(f"Geri bildirim hatası: {e}")
 
  with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statistics")):
-     conn = sqlite3.connect("kullanici_geri_bildirim.db")
-     cursor = conn.cursor()
-     cursor.execute("""
-         CREATE TABLE IF NOT EXISTS feedback (
-             id INTEGER PRIMARY KEY AUTOINCREMENT,
-             tarih TEXT,
-             icerik TEXT
-         )
-     """)
-     cursor.execute("SELECT COUNT(*) FROM feedback")
-     toplam_geri_bildirim = cursor.fetchone()[0]
+    conn = sqlite3.connect("kullanici_geri_bildirim.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tarih TEXT,
+            icerik TEXT
+        )
+    """)
+    cursor.execute("SELECT COUNT(*) FROM feedback")
+    toplam_geri_bildirim = cursor.fetchone()[0]
+    # ...devamı...
 
 
 # --- Versiyon Bilgisi ---
