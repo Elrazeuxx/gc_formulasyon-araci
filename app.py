@@ -203,5 +203,53 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
             "IPA": 40, "Etanol": 25, "PM": 15, "DPM": 10, "MEK": 5, "Etil Asetat": 5
         },
         "Pas Sökücü": {
-            "IPA": 10, "Etanol": 15, "Etil Asetat": ](#)*
+            "IPA": 10, "Etanol": 15, "Etil Asetat": 10, "MEK": 10, "DPM": 15, "Ksilen": 20, "Toluen": 20
+        },
+        "Metal Temizleyici": {
+            "IPA": 20, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5
+        },
+        "Cam Temizleyici": {
+            "IPA": 20, "Etanol": 10, "Su": 65, "DPM": 3, "Etil Asetat": 2
+        },
+        "Mürekkep Çözücü": {
+            "Etanol": 25, "IPA": 15, "DPM": 15, "Etil Asetat": 20, "MEK": 10, "Toluen": 10, "Ksilen": 5
+        },
+        "Yağ Sökücü": {
+            "IPA": 15, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5, "Heptan": 5
+        },
+        "Universal Temizleyici": {
+            "IPA": 10, "Etanol": 10, "Su": 70, "DPM": 5, "Etil Asetat": 5
+        },
+        "Hızlı Kuruyan Tiner": {
+            "Aseton": 30, "IPA": 20, "MEK": 20, "Etil Asetat": 15, "Toluen": 10, "Ksilen": 5
+        }
+    }
+
+    st.header(_("GC Analizine Göre Formülasyon Karşılaştırma", "Formulation Comparison by GC Analysis"))
+    kullanim = st.selectbox(_("Formülasyon Tipi", "Formulation Type"), list(FORMULASYONLAR.keys()))
+    target_formulation = FORMULASYONLAR[kullanim]
+    st.markdown(_("Kendi GC analiz verinizi girin ve hedef formül ile karşılaştırın.", "Enter your GC analysis data and compare with the target formulation."))
+
+    st.subheader(_("GC Pik Görseli (Varsa)", "GC Chromatogram Image (Optional)"))
+    uploaded_file = st.file_uploader(_("GC analiz görüntüsü yükle (isteğe bağlı)", "Upload GC analysis image (optional)"), type=["png", "jpg", "jpeg", "pdf"])
+    if uploaded_file:
+        st.image(uploaded_file, caption=_("GC Analiz Görseli", "GC Chromatogram Image"), use_column_width=True)
+
+    st.subheader(_("GC Analiz Verisi Girişi", "GC Analysis Data Input"))
+    gc_data = {}
+    cols = st.columns(3)
+    for i, bilesen in enumerate(target_formulation):
+        with cols[i % 3]:
+            oran = st.number_input(f"{bilesen} (%)", min_value=0.0, max_value=100.0, step=0.1, key="GC_" + bilesen)
+            gc_data[bilesen] = oran
+
+    total_percent = sum(gc_data.values())
+    if total_percent > 100:
+        st.warning(_("Uyarı: Toplam oran %100'ü aştı! (Şu an: %{:.2f})", "Warning: Total ratio exceeds 100%! (Now: %{:.2f})").format(total_percent))
+    elif total_percent < 99:
+        st.warning(_("Uyarı: Toplam oran %100'den düşük. (Şu an: %{:.2f})", "Warning: Total ratio is less than 100%. (Now: %{:.2f})").format(total_percent))
+
+    vp_values = {
+        "Etanol": 59, "IPA": 33, "N-Propanol": 21, "Etil Asetat": 73, "MEK": 70,
+        "PM": 5, "DPM": *
 
