@@ -193,32 +193,34 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
     ])))
 
     FORMULASYONLAR = {
-        "Çözücü": {
-            "Etanol": 20, "IPA": 20, "Etil Asetat": 20, "MEK": 15, "PM": 15, "DPM": 10
-        },
-        "Tiner": {
-            "Toluen": 30, "Ksilen": 30, "IPA": 10, "Etanol": 10, "MEK": 10, "Etil Asetat": 10
-        },
-        "Matbaa Solventi": {
-            "IPA": 40, "Etanol": 25, "PM": 15, "DPM": 10, "MEK": 5, "Etil Asetat": 5
-        },
-        "Pas Sökücü": {
-            "IPA": 10, "Etanol": 15, "Etil Asetat": 10, "MEK": 10, "DPM": 15, "Ksilen": 20, "Toluen": 20
-        },
-        "Metal Temizleyici": {
-            "IPA": 20, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5
-        },
-        "Cam Temizleyici": {
-            "IPA": 20, "Etanol": 10, "Su": 65, "DPM": 3, "Etil Asetat": 2
-        },
-        "Mürekkep Çözücü": {
-            "Etanol": 25, "IPA": 15, "DPM": 15, "Etil Asetat": 20, "MEK": 10, "Toluen": 10, "Ksilen": 5
-        },
-        "Yağ Sökücü": {
-            "IPA": 15, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5, "Heptan": 5
-        },
-        "Universal Temizleyici": {
-            "IPA": 10, "Etanol": 10, "Su": 70, "DPM": 5, "Etil Asetat": 5
-        },
-        "Hızlı Kuruyan Tiner":](#)*
-
+    "Çözücü": {
+        "Etanol": 20, "IPA": 20, "Etil Asetat": 20, "MEK": 15, "PM": 15, "DPM": 10
+    },
+    "Tiner": {
+        "Toluen": 30, "Ksilen": 30, "IPA": 10, "Etanol": 10, "MEK": 10, "Etil Asetat": 10
+    },
+    "Matbaa Solventi": {
+        "IPA": 40, "Etanol": 25, "PM": 15, "DPM": 10, "MEK": 5, "Etil Asetat": 5
+    },
+    "Pas Sökücü": {
+        "IPA": 10, "Etanol": 15, "Etil Asetat": 10, "MEK": 10, "DPM": 15, "Ksilen": 20, "Toluen": 20
+    },
+    "Metal Temizleyici": {
+        "IPA": 20, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5
+    },
+    "Cam Temizleyici": {
+        "IPA": 20, "Etanol": 10, "Su": 65, "DPM": 3, "Etil Asetat": 2
+    },
+    "Mürekkep Çözücü": {
+        "Etanol": 25, "IPA": 15, "DPM": 15, "Etil Asetat": 20, "MEK": 10, "Toluen": 10, "Ksilen": 5
+    },
+    "Yağ Sökücü": {
+        "IPA": 15, "Etanol": 10, "PM": 30, "DPM": 25, "MEK": 10, "Etil Asetat": 5, "Heptan": 5
+    },
+    "Universal Temizleyici": {
+        "IPA": 10, "Etanol": 10, "Su": 70, "DPM": 5, "Etil Asetat": 5
+    },
+    "Hızlı Kuruyan Tiner": {
+        "Aseton": 30, "IPA": 20, "MEK": 20, "Etil Asetat": 15, "Toluen": 10, "Ksilen": 5
+    }
+}
