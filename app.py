@@ -5,32 +5,54 @@ from datetime import datetime
 import sqlite3
 import logging
 
-# Kimya temalı arka plan görseli (Unsplash)
-background_image = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80"
+# EN ÜSTTE OLMALI!
+st.set_page_config(page_title="GC Formülasyon Aracı", layout="centered")
+
+# Kimya laboratuvarı ve mavi-gri arka plan (Unsplash)
+background_image = "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1500&q=80"
 st.markdown(
     f"""
     <style>
     .stApp {{
-        background-image: url("{background_image}");
-        background-attachment: fixed;
+        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%), url("{background_image}");
+        background-blend-mode: lighten;
         background-size: cover;
+        background-attachment: fixed;
         background-position: center;
+        color: #111 !important;
     }}
-    /* Sidebar'ı da şeffaflaştır */
+    /* Sidebar için yarı şeffaf, açık mavi-gri */
     [data-testid="stSidebar"] > div:first-child {{
-        background: rgba(255,255,255,0.85);
+        background: rgba(236, 239, 241, 0.88);
+        color: #111 !important;
     }}
-    /* Kartları ve ana kutuları şeffaf-beyaz yap */
+    /* Tüm kutular ve kartlar için açık gri arka plan */
     .st-cq, .st-bx, .st-ag, .st-cc {{
-        background: rgba(255,255,255,0.90) !important;
+        background: rgba(255,255,255,0.91) !important;
+        color: #111 !important;
+        border-radius: 12px;
+    }}
+    /* Başlıklar siyah, önemli başlıklar/küçük başlıklar kırmızı */
+    h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {{
+        color: #111 !important;
+    }}
+    .kirmizi, .highlight, .stAlert, .stMarkdown strong {{
+        color: #d32f2f !important;
+        font-weight: bold !important;
+    }}
+    /* Uyarı ve başarı kutularını daha belirgin yap */
+    .stAlert {{
+        border-left: 8px solid #d32f2f !important;
+        background: #fff3e0 !important;
+        color: #d32f2f !important;
+    }}
+    a {{
+        color: #0288d1 !important;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
-
-# Sayfa ayarı
-st.set_page_config(page_title="GC Formülasyon Aracı", layout="centered")
 
 # --- LOG dosyası ---
 logging.basicConfig(filename="log_kaydi.log", level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -96,7 +118,7 @@ with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statist
 
 # --- Versiyon Bilgisi ---
 st.sidebar.markdown("---")
-st.sidebar.info("🛠 Versiyon: 1.0.0\n📅 Güncelleme: 2025-05-24\n📌 Yeni: Kimya temalı arka plan, GC modülü, Solvent paneli, Veritabanı, Çoklu Dil")
+st.sidebar.info("🛠 Versiyon: 1.0.0\n📅 Güncelleme: 2025-05-24\n📌 Yeni: Kimya laboratuvarı arka planı, GC modülü, Solvent paneli, Veritabanı, Çoklu Dil")
 
 # --- Solvent & GC Bölümü ---
 KATEGORILER = {
@@ -200,9 +222,9 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
 
     total_percent = sum(gc_data.values())
     if total_percent > 100:
-        st.error(_("Uyarı: Toplam oran %100'ü aştı! (Şu an: %{:.2f})", "Warning: Total ratio exceeds 100%! (Now: %{:.2f})").format(total_percent))
+        st.markdown('<span class="kirmizi">Uyarı: Toplam oran %100\'ü aştı! (Şu an: %{:.2f})</span>'.format(total_percent), unsafe_allow_html=True)
     elif total_percent < 99:
-        st.warning(_("Uyarı: Toplam oran %100'den düşük. (Şu an: %{:.2f})", "Warning: Total ratio is less than 100%. (Now: %{:.2f})").format(total_percent))
+        st.markdown('<span class="kirmizi">Uyarı: Toplam oran %100\'den düşük. (Şu an: %{:.2f})</span>'.format(total_percent), unsafe_allow_html=True)
 
     # --- VP değerleri (örnek) ---
     vp_values = {
@@ -229,9 +251,9 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
             if abs(fark) < 0.01:
                 continue
             elif fark > 0:
-                st.success(f"+ {fark:.2f}% {bileşen} " + _("eklenmeli", "should be added"))
+                st.markdown(f'<span class="kirmizi">+ {fark:.2f}% {bileşen} eklenmeli</span>', unsafe_allow_html=True)
             elif fark < 0:
-                st.warning(f"- {abs(fark):.2f}% {bileşen} " + _("azaltılmalı", "should be reduced"))
+                st.markdown(f'<span class="kirmizi">- {abs(fark):.2f}% {bileşen} azaltılmalı</span>', unsafe_allow_html=True)
 
         def hesapla_toplam_vp(formulasyon):
             toplam = sum(formulasyon.values())
@@ -254,14 +276,14 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
             st.markdown(f"- **{bilesen}** (VP: {vp} mmHg)")
 
         st.subheader(_("Koku Giderme Önerileri", "Odor Removal Recommendations"))
-        st.markdown("- " + _("Aktif karbon filtresi ile destilasyon sonrası arıtım", "Post-distillation treatment with activated carbon filter"))
-        st.markdown("- " + _("Amonyak kokusu varsa: pH kontrolü yapılıp sodyum bikarbonatla nötrleştirilmeli", "If ammonia odor: check pH, neutralize with sodium bicarbonate"))
-        st.markdown("- " + _("Epoksi bozunmaları varsa ağır fraksiyonlar ayrılmalı", "If epoxy decomposition: separate heavy fractions"))
+        st.markdown('<span class="kirmizi">- Aktif karbon filtresi ile destilasyon sonrası arıtım</span>', unsafe_allow_html=True)
+        st.markdown('<span class="kirmizi">- Amonyak kokusu varsa: pH kontrolü yapılıp sodyum bikarbonatla nötrleştirilmeli</span>', unsafe_allow_html=True)
+        st.markdown('<span class="kirmizi">- Epoksi bozunmaları varsa ağır fraksiyonlar ayrılmalı</span>', unsafe_allow_html=True)
 
         st.subheader(_("Renk Giderme Önerileri", "Color Removal Recommendations"))
-        st.markdown("- " + _("Fraksiyonel damıtma ile koyu fraksiyonları ayır", "Separate dark fractions by fractional distillation"))
-        st.markdown("- " + _("Silika jel veya bentonit filtrelemesi", "Silica gel or bentonite filtration"))
-        st.markdown("- " + _("Aldol tipi kalıntılar varsa bazla nötralize et ve kısa süreli ısıtma yap", "If aldol-type residues: neutralize with base and short heating"))
+        st.markdown('<span class="kirmizi">- Fraksiyonel damıtma ile koyu fraksiyonları ayır</span>', unsafe_allow_html=True)
+        st.markdown('<span class="kirmizi">- Silika jel veya bentonit filtrelemesi</span>', unsafe_allow_html=True)
+        st.markdown('<span class="kirmizi">- Aldol tipi kalıntılar varsa bazla nötralize et ve kısa süreli ısıtma yap</span>', unsafe_allow_html=True)
 
 elif MODUL == _("Solvent Bilgi Paneli", "Solvent Info Panel"):
     kategori = st.sidebar.selectbox(_("Solvent/Sınıf Grubu Seçin", "Select Solvent/Class Group"), list(KATEGORILER.keys()))
@@ -287,13 +309,13 @@ elif MODUL == _("Solvent Bilgi Paneli", "Solvent Info Panel"):
     ]
     eksik = [s for s in gerekli_sutunlar if s not in df.columns]
     if eksik:
-        st.error(_("CSV'de eksik sütunlar var: ", "Missing columns in CSV: ") + ", ".join(eksik))
+        st.markdown('<span class="kirmizi">CSV\'de eksik sütunlar var: ' + ", ".join(eksik) + '</span>', unsafe_allow_html=True)
     elif len(df) == 0:
-        st.warning(_(f"{kategori} için veri bulunamadı.", f"No data for {kategori}."))
+        st.markdown('<span class="kirmizi">' + _(f"{kategori} için veri bulunamadı.", f"No data for {kategori}.") + '</span>', unsafe_allow_html=True)
     else:
         isimler = df["İsim"].dropna().tolist()
         if not isimler:
-            st.warning(_("Seçilebilecek isim yok.", "No names to select."))
+            st.markdown('<span class="kirmizi">Seçilebilecek isim yok.</span>', unsafe_allow_html=True)
         else:
             secili = st.selectbox(_(f"{kategori} Seç", f"Select {kategori}"), isimler)
             bilgi = df[df["İsim"] == secili].iloc[0]
