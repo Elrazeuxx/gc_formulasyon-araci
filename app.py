@@ -237,11 +237,16 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
     if uploaded_file:
         st.image(uploaded_file, caption=_("GC Analiz Görseli", "GC Chromatogram Image"), use_column_width=True)
 
-    # --- Tüm solventler için veri girişi ---
+    # --- Seçmeli GC analiz veri girişi ---
     st.subheader(_("GC Analiz Verisi Girişi", "GC Analysis Data Input"))
+    secili_solventler = st.multiselect(
+        _("GC analizine dahil etmek istediğiniz solventleri seçin", "Select solvents to include in GC analysis"),
+        solventler,
+        default=[s for s in target_formulation.keys() if s in solventler]
+    )
     gc_data = {}
     cols = st.columns(3)
-    for i, bilesen in enumerate(solventler):
+    for i, bilesen in enumerate(secili_solventler):
         with cols[i % 3]:
             oran = st.number_input(f"{bilesen} (%)", min_value=0.0, max_value=100.0, step=0.1, key="GC_" + bilesen)
             gc_data[bilesen] = oran
@@ -259,18 +264,16 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
         "Dietil Eter": 440, "Su": 23, "NMP": 0.3, "DMF": 2.7, "Tetrahydrofuran": 143
     }
 
-    # Hedef ve girişteki tüm solventleri göz önünde bulundur
-    all_keys = sorted(set(list(solventler) + list(target_formulation.keys())))
-    formul_farki = {key: target_formulation.get(key, 0) - gc_data.get(key, 0) for key in all_keys}
+    formul_farki = {key: target_formulation.get(key, 0) - gc_data.get(key, 0) for key in secili_solventler}
     sorted_farklar = sorted(formul_farki.items(), key=lambda x: abs(x[1]), reverse=True)
 
     if st.button(_("Formülasyonu Hesapla", "Calculate Formulation")):
         st.subheader(_("Girdi & Hedef Karşılaştırma Tablosu", "Input & Target Comparison Table"))
         tablo = pd.DataFrame({
-            _("GC Analiz (%)", "GC Analysis (%)"): [gc_data.get(b, 0) for b in all_keys],
-            _("Hedef (%)", "Target (%)"): [target_formulation.get(b, 0) for b in all_keys],
-            _("Fark (%)", "Difference (%)"): [formul_farki.get(b, 0) for b in all_keys]
-        }, index=all_keys)
+            _("GC Analiz (%)", "GC Analysis (%)"): [gc_data.get(b, 0) for b in secili_solventler],
+            _("Hedef (%)", "Target (%)"): [target_formulation.get(b, 0) for b in secili_solventler],
+            _("Fark (%)", "Difference (%)"): [formul_farki.get(b, 0) for b in secili_solventler]
+        }, index=secili_solventler)
         st.dataframe(tablo.style.highlight_max(axis=0, color='#1976d2').highlight_min(axis=0, color='#ff4b5c'))
 
         st.subheader(_("Önerilen Formülasyon Değişiklikleri", "Suggested Formulation Adjustments"))
@@ -313,9 +316,45 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
         st.warning(_("Aldol tipi kalıntılar varsa bazla nötralize et ve kısa süreli ısıtma yap", "If aldol-type residues: neutralize with base and short heating"))
 
 elif MODUL == _("Solvent Bilgi Paneli", "Solvent Info Panel"):
-    kategori = st.sidebar.selectbox(_("Solvent/Sınıf Grubu Seçin", "Select Solvent/Class Group"), list(KATEGORILER.keys()))
-    csv_yolu = KATEGORILER[kategori]
+    # --- Solvent Bilgi Paneli'nde "Tüm Solventler" seçeneği ---
+    kategori_listesi = ["Tüm Solventler"] + list(KATEGORILER.keys())
+    kategori = st.sidebar.selectbox(_("Solvent/Sınıf Grubu Seçin", "Select Solvent/Class Group"), kategori_listesi)
 
+    if kategori == "Tüm Solventler":
+        df_list = []
+        for csv_yolu in KATEGORILER.values():
+            if os.path.isfile(csv_yolu):
+                try:
+                    df = pd.read_csv(csv_yolu)
+                    df["Kategori"] = os.path.splitext(os.path.basename(csv_yolu))[0]
+                    df_list.append(df)
+                except Exception as e:
+                    st.warning(f"{csv_yolu} okunamadı: {e}")
+        if df_list:
+            df_all = pd.concat(df_list, ignore_index=True)
+            st.subheader(_("Tüm Solventler Listesi", "Full Solvent List"))
+            st.dataframe(df_all, use_container_width=True)
+            isimler = df_all["İsim"].dropna().tolist()
+            secili = st.selectbox(_("Solvent Seç", "Select Solvent"), isimler)
+            bilgi = df_all[df_all["İsim"] == secili].iloc[0]
+            st.markdown(f"""
+**Kategori:** {bilgi.get('Kategori', '-')}
+**Kapalı Formül:** {bilgi.get('Kapalı Formül', '-')}
+**Kaynama Noktası:** {bilgi.get('Kaynama Noktası (°C)', '-')} °C
+**Yoğunluk:** {bilgi.get('Yoğunluk (g/cm³)', '-')} g/cm³
+**pH:** {bilgi.get('pH', '-')}
+**Çözünürlük:** {bilgi.get('Suda Çözünürlük (%)', '-')} %
+**Max Su Oranı:** {bilgi.get('Max Su Oranı (%)', '-')}
+**Uyumlu Solventler:** {bilgi.get('Uyumlu Solventler', '-')}
+**Kullanım Alanları:** {bilgi.get('Kullanım Alanları', '-')}
+**Toksisite:** {bilgi.get('Toksisite / Güvenlik', '-')}
+""")
+        else:
+            st.warning("Hiçbir solvent dosyası bulunamadı veya okunamadı.")
+        st.stop()
+
+    # --- Klasik kategoriye göre gösterim ---
+    csv_yolu = KATEGORILER[kategori]
     if not os.path.isfile(csv_yolu):
         st.error(f"{kategori} için '{csv_yolu}' dosyası bulunamadı. Lütfen '{csv_yolu}' dosyasını oluşturun!")
         st.stop()
