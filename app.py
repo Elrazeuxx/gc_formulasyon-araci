@@ -177,6 +177,7 @@ MODUL = st.sidebar.radio(
 )
 
 if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
+    # --- Tüm solventleri topla ---
     solventler = []
     for csv_path in KATEGORILER.values():
         if os.path.isfile(csv_path):
@@ -186,11 +187,12 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
                     solventler += df["İsim"].dropna().tolist()
             except Exception:
                 pass
-    solventler = sorted(list(set(solventler + [
+    # Elle eklenenler de dahil et
+    solventler = sorted(set(solventler + [
         "Etanol", "IPA", "N-Propanol", "Etil Asetat", "PM", "MEK", "Bütanol", "Toluen", "Ksilen",
         "Aseton", "Metil Asetat", "Butil Asetat", "Etil Laktat", "DPM", "Texanol", "Metanol", "Benzin", "Heptan",
         "Dietil Eter", "Propilen Karbonat", "Su", "NMP", "DMF", "Tetrahydrofuran"
-    ])))
+    ]))
 
     FORMULASYONLAR = {
         "Çözücü": {
@@ -235,10 +237,11 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
     if uploaded_file:
         st.image(uploaded_file, caption=_("GC Analiz Görseli", "GC Chromatogram Image"), use_column_width=True)
 
+    # --- Tüm solventler için veri girişi ---
     st.subheader(_("GC Analiz Verisi Girişi", "GC Analysis Data Input"))
     gc_data = {}
     cols = st.columns(3)
-    for i, bilesen in enumerate(target_formulation):
+    for i, bilesen in enumerate(solventler):
         with cols[i % 3]:
             oran = st.number_input(f"{bilesen} (%)", min_value=0.0, max_value=100.0, step=0.1, key="GC_" + bilesen)
             gc_data[bilesen] = oran
@@ -256,16 +259,18 @@ if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
         "Dietil Eter": 440, "Su": 23, "NMP": 0.3, "DMF": 2.7, "Tetrahydrofuran": 143
     }
 
-    formul_farki = {key: target_formulation.get(key, 0) - gc_data.get(key, 0) for key in target_formulation}
+    # Hedef ve girişteki tüm solventleri göz önünde bulundur
+    all_keys = sorted(set(list(solventler) + list(target_formulation.keys())))
+    formul_farki = {key: target_formulation.get(key, 0) - gc_data.get(key, 0) for key in all_keys}
     sorted_farklar = sorted(formul_farki.items(), key=lambda x: abs(x[1]), reverse=True)
 
     if st.button(_("Formülasyonu Hesapla", "Calculate Formulation")):
         st.subheader(_("Girdi & Hedef Karşılaştırma Tablosu", "Input & Target Comparison Table"))
         tablo = pd.DataFrame({
-            _("GC Analiz (%)", "GC Analysis (%)"): [gc_data.get(b, 0) for b in target_formulation],
-            _("Hedef (%)", "Target (%)"): [target_formulation.get(b, 0) for b in target_formulation],
-            _("Fark (%)", "Difference (%)"): [formul_farki.get(b, 0) for b in target_formulation]
-        }, index=target_formulation)
+            _("GC Analiz (%)", "GC Analysis (%)"): [gc_data.get(b, 0) for b in all_keys],
+            _("Hedef (%)", "Target (%)"): [target_formulation.get(b, 0) for b in all_keys],
+            _("Fark (%)", "Difference (%)"): [formul_farki.get(b, 0) for b in all_keys]
+        }, index=all_keys)
         st.dataframe(tablo.style.highlight_max(axis=0, color='#1976d2').highlight_min(axis=0, color='#ff4b5c'))
 
         st.subheader(_("Önerilen Formülasyon Değişiklikleri", "Suggested Formulation Adjustments"))
