@@ -5,7 +5,31 @@ from datetime import datetime
 import sqlite3
 import logging
 
-# Sayfa ayarı (ilk Streamlit fonksiyonu olmalı)
+# Kimya temalı arka plan görseli (Unsplash)
+background_image = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80"
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("{background_image}");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }}
+    /* Sidebar'ı da şeffaflaştır */
+    [data-testid="stSidebar"] > div:first-child {{
+        background: rgba(255,255,255,0.85);
+    }}
+    /* Kartları ve ana kutuları şeffaf-beyaz yap */
+    .st-cq, .st-bx, .st-ag, .st-cc {{
+        background: rgba(255,255,255,0.90) !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Sayfa ayarı
 st.set_page_config(page_title="GC Formülasyon Aracı", layout="centered")
 
 # --- LOG dosyası ---
@@ -16,8 +40,8 @@ language = st.sidebar.selectbox("🌍 Dil / Language", ["Türkçe", "English"])
 def _(tr, en): return tr if language == "Türkçe" else en
 
 st.image("https://i.imgur.com/4dVjR8r.png", width=100)
-st.title(_("📘 GC Formülasyon Aracı", "📘 GC Formulation Tool"))
-st.caption(_("Gelişmiş solvent veri yönetimi ve formülasyon asistanı.", "Advanced solvent data management and formulation assistant."))
+st.title(_("🔬 GC Formülasyon Aracı", "🔬 GC Formulation Tool"))
+st.caption(_("Kimya ve endüstriyel solvent yönetiminde akıllı asistan.", "Smart assistant for chemical and industrial solvent management."))
 
 # --- Admin Paneli ---
 with st.sidebar.expander(_("⚙️ Ayarlar ve Geri Bildirim", "⚙️ Settings & Feedback")):
@@ -72,7 +96,7 @@ with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statist
 
 # --- Versiyon Bilgisi ---
 st.sidebar.markdown("---")
-st.sidebar.info("🛠 Versiyon: 1.0.0\n📅 Güncelleme: 2025-05-24\n📌 Yeni: Veritabanı, Geri Bildirim, Loglama, Çoklu Dil Desteği")
+st.sidebar.info("🛠 Versiyon: 1.0.0\n📅 Güncelleme: 2025-05-24\n📌 Yeni: Kimya temalı arka plan, GC modülü, Solvent paneli, Veritabanı, Çoklu Dil")
 
 # --- Solvent & GC Bölümü ---
 KATEGORILER = {
