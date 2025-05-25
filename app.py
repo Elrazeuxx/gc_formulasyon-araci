@@ -7,7 +7,6 @@ import logging
 
 st.set_page_config(page_title="GC Formülasyon Aracı", layout="centered")
 
-# Koyu temalı laboratuvar görseli ve renkler
 background_image = "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1500&q=80"
 st.markdown(
     f"""
@@ -20,28 +19,23 @@ st.markdown(
         background-position: center;
         color: #f5f6fa !important;
     }}
-    /* Sidebar daha koyu ve yazılar beyaz */
     [data-testid="stSidebar"] > div:first-child {{
         background: rgba(30,34,40,0.97);
         color: #f5f6fa !important;
     }}
-    /* Kutular ve kartlar koyu gri */
     .st-cq, .st-bx, .st-ag, .st-cc {{
         background: rgba(44, 62, 80, 0.93) !important;
         color: #f5f6fa !important;
         border-radius: 12px;
         border: 1px solid #353b48;
     }}
-    /* Başlıklar açık gri-beyaz */
     h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {{
         color: #f5f6fa !important;
     }}
-    /* Vurgular kırmızı ve kalın */
     .highlight, .kirmizi, .stMarkdown strong {{
         color: #ff4b5c !important;
         font-weight: bold !important;
     }}
-    /* Bildirim kutuları kontrastlı ve parlak metinli */
     .stAlert-success {{
         background: #263238 !important;
         color: #00e676 !important;
@@ -62,19 +56,152 @@ st.markdown(
         color: #ff1744 !important;
         border-left: 8px solid #ff1744 !important;
     }}
-    /* st.metric yazılarını açık yap */
     .element-container .stMetric-value, .element-container .stMetric-label {{
         color: #f5f6fa !important;
     }}
     a {{
         color: #40c9ff !important;
     }}
-    /* Butonlar: Arka plan mavi, yazı beyaz, hover'da açık mavi */
     .stButton > button {{
         color: #fff !important;
         background-color: #1976d2 !important;
         border-radius: 6px;
         border: none;
         padding: 0.5em 1.5em;
-        font*
+        font-weight: bold;
+        transition: background 0.2s;
+        box-shadow: 0 2px 8px #0002;
+    }}
+    .stButton > button:hover {{
+        color: #222 !important;
+        background: #90caf9 !important;
+    }}
+    .stButton + div .highlight, .stButton + div .kirmizi {{
+        color: #ff4b5c !important;
+        font-weight: bold !important;
+    }}
+    .stFileUploader label, .stFileUploader span {{
+        color: #f5f6fa !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+logging.basicConfig(filename="log_kaydi.log", level=logging.INFO, format='%(asctime)s - %(message)s')
+
+language = st.sidebar.selectbox("🌍 Dil / Language", ["Türkçe", "English"])
+def _(tr, en): return tr if language == "Türkçe" else en
+
+st.image("https://i.imgur.com/4dVjR8r.png", width=100)
+st.title(_("🔬 GC Formülasyon Aracı", "🔬 GC Formulation Tool"))
+st.caption(_("Kimya ve endüstriyel solvent yönetiminde akıllı asistan.", "Smart assistant for chemical and industrial solvent management."))
+
+with st.sidebar.expander(_("⚙️ Ayarlar ve Geri Bildirim", "⚙️ Settings & Feedback")):
+    tema = st.radio(_("Tema Renk Seçimi:", "Select Theme Color:"), ["Varsayılan", "Açık", "Koyu"])
+    geri_bildirim = st.text_area(_("Görüş ve önerilerinizi yazabilirsiniz:", "You can share feedback or suggestions:"))
+    if st.button(_("Gönder", "Submit")):
+        try:
+            conn = sqlite3.connect("kullanici_geri_bildirim.db")
+            cursor = conn.cursor()
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS feedback (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tarih TEXT,
+                    icerik TEXT
+                )
+            """)
+            cursor.execute(
+                "INSERT INTO feedback (tarih, icerik) VALUES (?, ?)",
+                (datetime.now().strftime("%Y-%m-%d %H:%M"), geri_bildirim)
+            )
+            conn.commit()
+            conn.close()
+            st.success(_("Teşekkür ederiz! Geri bildiriminiz alınmıştır.", "Thank you! Your feedback has been submitted."))
+            logging.info("Yeni geri bildirim kaydedildi.")
+        except Exception as e:
+            st.error(_("Bir hata oluştu.", "An error occurred."))
+            logging.error(f"Geri bildirim hatası: {e}")
+
+with st.sidebar.expander(_("📊 Kullanım İstatistikleri", "📊 Usage Statistics")):
+    conn = sqlite3.connect("kullanici_geri_bildirim.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tarih TEXT,
+            icerik TEXT
+        )
+    """)
+    cursor.execute("SELECT COUNT(*) FROM feedback")
+    toplam_geri_bildirim = cursor.fetchone()[0]
+    st.metric(_("Gelen Geri Bildirim Sayısı", "Total Feedbacks"), toplam_geri_bildirim)
+    cursor.execute("SELECT tarih FROM feedback ORDER BY id DESC LIMIT 1")
+    son = cursor.fetchone()
+    st.metric(_("Son Bildirim Tarihi", "Last Feedback"), son[0] if son else "-")
+    if st.button(_("📥 Veritabanını CSV Olarak İndir", "📥 Download Feedback DB as CSV")):
+        df_feedback = pd.read_sql_query("SELECT * FROM feedback", conn)
+        csv_yolu = "feedback_" + datetime.now().strftime("%Y%m%d_%H%M") + ".csv"
+        df_feedback.to_csv(csv_yolu, index=False)
+        st.success(_("CSV dosyası oluşturuldu: ", "CSV file created: ") + csv_yolu)
+    conn.close()
+
+st.sidebar.markdown("---")
+st.sidebar.info("🛠 Versiyon: 1.0.0\n📅 Güncelleme: 2025-05-25\n📌 Koyu Tema, okunaklı bildirimler, GC modülü ve Solvent paneli")
+
+KATEGORILER = {
+    "Alkoller": "data/alkoller.csv",
+    "Ketonlar": "data/ketonlar.csv",
+    "Asetatlar": "data/asetatlar.csv",
+    "Asitler": "data/asitler.csv",
+    "Bazlar": "data/bazlar.csv",
+    "Aldehitler": "data/aldehitler.csv",
+    "Aromatikler": "data/aromatikler.csv",
+    "Glikoller": "data/glikoller.csv",
+    "Aminler": "data/aminler.csv",
+    "Esterler": "data/esterler.csv",
+    "Eterler": "data/eterler.csv",
+    "Klorlu Solventler": "data/klorlu_solventler.csv",
+    "Hidrokarbonlar": "data/hidrokarbonlar.csv",
+    "Polar Aprotik Solventler": "data/polar_aprotik_solventler.csv",
+    "Biyolojik Solventler": "data/biyolojik_solventler.csv",
+    "Yüksek Kaynama Noktalı Solventler": "data/yuksek_kaynama_solventler.csv",
+    "Metal Temizleme Solventleri": "data/metal_temizleme_solventleri.csv",
+    "Reaktif Solventler": "data/reaktif_solventler.csv",
+    "Elektronik Sınıf Solventler": "data/elektronik_sinif_solventler.csv"
+}
+
+MODUL = st.sidebar.radio(
+    _("Modül Seç", "Select Module"),
+    (_("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"), _("Solvent Bilgi Paneli", "Solvent Info Panel"))
+)
+
+if MODUL == _("GC Formülasyon Karşılaştırma", "GC Formulation Comparison"):
+    solventler = []
+    for csv_path in KATEGORILER.values():
+        if os.path.isfile(csv_path):
+            try:
+                df = pd.read_csv(csv_path)
+                if "İsim" in df.columns:
+                    solventler += df["İsim"].dropna().tolist()
+            except Exception:
+                pass
+    solventler = sorted(list(set(solventler + [
+        "Etanol", "IPA", "N-Propanol", "Etil Asetat", "PM", "MEK", "Bütanol", "Toluen", "Ksilen",
+        "Aseton", "Metil Asetat", "Butil Asetat", "Etil Laktat", "DPM", "Texanol", "Metanol", "Benzin", "Heptan",
+        "Dietil Eter", "Propilen Karbonat", "Su", "NMP", "DMF", "Tetrahydrofuran"
+    ])))
+
+    FORMULASYONLAR = {
+        "Çözücü": {
+            "Etanol": 20, "IPA": 20, "Etil Asetat": 20, "MEK": 15, "PM": 15, "DPM": 10
+        },
+        "Tiner": {
+            "Toluen": 30, "Ksilen": 30, "IPA": 10, "Etanol": 10, "MEK": 10, "Etil Asetat": 10
+        },
+        "Matbaa Solventi": {
+            "IPA": 40, "Etanol": 25, "PM": 15, "DPM": 10, "MEK": 5, "Etil Asetat": 5
+        },
+        "Pas Sökücü": {
+            "IPA": 10, "Etanol": 15, "Etil Asetat": ](#)*
 
